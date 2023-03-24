@@ -7,7 +7,7 @@ go to command prompt.
 Type "mongod"
 
 
-go to file and open with visual studio
+go to file and open with visual studio.
 in task bar, go to terminal > new terminal 
 type " npm install express mongoose ejs body-parser"
 
