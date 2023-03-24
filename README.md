@@ -3,7 +3,7 @@
 
 install mongoDB (also install mongoDBcompass)
 
-go to command prompt
+go to command prompt.
 Type "mongod"
 
 
@@ -13,6 +13,6 @@ type " npm install express mongoose ejs body-parser"
 
 
 open mongoDBcompass 
-click "connect" button
-go to your browser
+click "connect" button.
+go to your browser,
 in address bar type "localhost:3000"
