@@ -13,10 +13,15 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 
-
+const MongodbClient = require("mongodb").MongoClient
 const dburl = "mongodb://localhost:27017/tododb"
 mongoose.connect(dburl, { useNewUrlParser: true, useUnifiedTopology: true})
 
+MongodbClient.connect(dburl, { useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
+    if(err) throw err;
+    console.log("Database connected")
+    db.close();
+})
 app.get("/", (request, response) => {
     Todo.find()
     .then(result => {
