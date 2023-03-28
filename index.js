@@ -4,8 +4,9 @@ const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
 const { request, response } = require("express")
 const Todo = require("./models/todo")
+const { db } = require("./models/todo")
 
-const port = 3000
+const port = 8080
 
 app.set("view engine", "ejs")
 app.use(express.static("public"))
@@ -13,15 +14,17 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 
-const MongodbClient = require("mongodb").MongoClient
-const dburl = "mongodb://localhost:27017/tododb"
-mongoose.connect(dburl, { useNewUrlParser: true, useUnifiedTopology: true})
+const dburl = "mongodb://mongo:27017/tododb"
 
-MongodbClient.connect(dburl, { useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
-    if(err) throw err;
-    console.log("Database connected")
-    db.close();
-})
+mongoose.connect(dburl, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log("Connected to database")
+    })
+    .catch((err) => {
+        console.log("Error occured while connecting to database")
+        throw err
+    })
+
 app.get("/", (request, response) => {
     Todo.find()
     .then(result => {
@@ -51,3 +54,9 @@ app.listen(port, () => {
     console.log("server is running on port " + port)
 })
 
+/*
+docker build -t todolist .
+docker tag todolist jaruwit178/os
+docker push jaruwit178/os
+kubectl apply -f .
+*/
