@@ -7,7 +7,6 @@ const Todo = require("./models/todo")
 const { db } = require("./models/todo")
 
 const port = 8080
-
 app.set("view engine", "ejs")
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({extended: true}))
@@ -46,9 +45,10 @@ app.post("/", (request, response) => {
 })
 
 app.delete("/:id", (request, response) => {
+    console.log(request.params.id)
     Todo.findByIdAndDelete(request.params.id)
     .then(result => {
-        console.log(result)
+        // console.log(result)
     })
 })
 

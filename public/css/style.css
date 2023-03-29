@@ -18,3 +18,8 @@ button{
     height: 30px;
     border: none;
 }
+
+button.todo-delete{
+    background-color: red;
+    color: white;
+}
