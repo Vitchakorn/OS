@@ -9,8 +9,8 @@ const { db } = require("./models/todo")
 const port = 8080
 app.set("view engine", "ejs")
 app.use(express.static("public"))
-// app.use(bodyParser.urlencoded({extended: true}))
-// app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
 
 
 // const dburl = "mongodb://mongo:27017/tododb"
