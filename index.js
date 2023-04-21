@@ -13,9 +13,9 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 
-const dburl = "mongodb://mongo:27017/tododb"
+// const dburl = "mongodb://mongo:27017/tododb"
 
-// const dburl = "mongodb://localhost:27017/todo-list"
+const dburl = "mongodb://localhost:27017/todo-list"
 
 mongoose.connect(dburl, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
